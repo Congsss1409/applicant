@@ -24,17 +24,16 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
                         title: 'Success!',
                         text: 'Record deleted successfully.',
                         icon: 'success',
-                        confirmButtonText: 'OK'
-                        
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = 'index.php';
-                        }
+                        showConfirmButton: false, // Remove the confirm button
+                        timer: 2000 // Set the timer for 3 seconds
+                    }).then(() => {
+                        window.location.href = 'index.php'; // Redirect after timer ends
                     });
                 });
             </script>"; // Closing parenthesis added here
         exit();
-    } else {
+    }
+     else {
         echo "Error deleting record: " . mysqli_error($conn);
     }
 

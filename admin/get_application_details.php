@@ -20,6 +20,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<p><strong>Name:</strong> " . $row['name'] . "</p>";
     echo "<p><strong>Email:</strong> " . $row['email'] . "</p>";
     echo "<p><strong>Position:</strong> " . $row['position'] . "</p>";
+    echo "<p><strong>Status:</strong> " . $row['status'] . "</p>";
     // Add more details if needed
 } else {
     echo "Application not found";

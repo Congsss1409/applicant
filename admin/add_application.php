@@ -6,45 +6,17 @@
     <title>Add New Application</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap.min.css">
-    <style>
-        /* Custom CSS */
-        body {
-            background-color: #f8f9fa;
-        }
-        .container {
-            max-width: 500px;
-            margin-top: 50px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            background-color: white;
-        }
-        .btn-back {
-            margin-right: 10px;
-        }
-        .form-group label {
-            font-weight: bold;
-        }
-    </style>
+   
     <script src='sweetalert2.all.min'></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="logo.png" alt="ATS Logo" height="50">
-            </a>
-            <h1 class="mx-auto">Applicant Tracking Management System</h1>
-        </div>
-    </nav>
+   
 
     <!-- PHP code for form submission -->
     
 
     <!-- Form to add new application -->
-    <div class="container">
-        <h2 class="mb-4 mt-3">Add New Applicant</h2>
+    
         <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Establish database connection
@@ -118,25 +90,7 @@
         mysqli_close($conn);
     }
     ?>
-        <form method="post">
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="mb-3">
-                <label for="position" class="form-label">Position</label>
-                <input type="text" class="form-control" id="position" name="position" required>
-            </div>
-            <div class="mb-3">
-                <button type="submit" class="btn btn-success">Submit</button>
-                <a href="index.php" class="btn btn-primary btn-back">Back to Dashboard</a>
-            </div>
-        </form>
-    </div>
+        
 
     <!-- Bootstrap JavaScript -->
     <script src="bootstrap.bundle.min.js"></script>
