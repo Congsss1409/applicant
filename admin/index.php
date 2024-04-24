@@ -105,6 +105,7 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Position</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -128,9 +129,10 @@
                                             echo "<td>" . $row['name'] . "</td>";
                                             echo "<td>" . $row['email'] . "</td>";
                                             echo "<td>" . $row['position'] . "</td>";
+                                            echo "<td>" . $row['status'] . "</td>";
                                             echo "<td>
                                                     <button type='button' class='btn btn-info' data-bs-toggle='modal' data-bs-target='#viewModal" . $row['id'] . "'>View</button>
-                                                    <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#editModal" . $row['id'] . "'>Edit</button>
+                                                    <button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#editModal" . $row['id'] . "'>Update</button>
                                                     <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal" . $row['id'] . "'>Delete</button>
                                                   </td>";
                                             echo "</tr>";
@@ -157,33 +159,41 @@
                                             echo "</div>";
 
                                             // Edit Modal
-echo "<div class='modal fade' id='editModal" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='editModalLabel" . $row['id'] . "' aria-hidden='true'>";
-echo "<div class='modal-dialog' role='document'>";
-echo "<div class='modal-content'>";
-echo "<div class='modal-header'>";
-echo "<h5 class='modal-title' id='editModalLabel" . $row['id'] . "'>Edit Applicant</h5>";
-echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
-echo "</div>";
-echo "<div class='modal-body'>";
-echo "<form method='POST' action='edit_application.php?id=" . $row['id'] . "'>"; // Form action updated
-echo "<div class='mb-3'>";
-echo "<label for='name' class='form-label'>Name</label>";
-echo "<input type='text' class='form-control' id='name' name='name' value='" . $row['name'] . "' required>"; // Input name updated
-echo "</div>";
-echo "<div class='mb-3'>";
-echo "<label for='email' class='form-label'>Email</label>";
-echo "<input type='email' class='form-control' id='email' name='email' value='" . $row['email'] . "' required>"; // Input name updated
-echo "</div>";
-echo "<div class='mb-3'>";
-echo "<label for='position' class='form-label'>Position</label>";
-echo "<input type='text' class='form-control' id='position' name='position' value='" . $row['position'] . "' required>"; // Input name updated
-echo "</div>";
-echo "<button type='submit' class='btn btn-primary'>Update</button>";
-echo "</form>";
-echo "</div>";
-echo "</div>";
-echo "</div>";
-echo "</div>";
+        echo "<div class='modal fade' id='editModal" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='editModalLabel" . $row['id'] . "' aria-hidden='true'>";
+        echo "<div class='modal-dialog' role='document'>";
+        echo "<div class='modal-content'>";
+        echo "<div class='modal-header'>";
+        echo "<h5 class='modal-title' id='editModalLabel" . $row['id'] . "'>Update Applicant</h5>";
+        echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
+        echo "</div>";
+        echo "<div class='modal-body'>";
+        echo "<form method='POST' action='edit_application.php?id=" . $row['id'] . "'>"; // Form action updated
+        echo "<div class='mb-3'>";
+        echo "<label for='name' class='form-label'>Name</label>";
+        echo "<input type='text' class='form-control' id='name' name='name' value='" . $row['name'] . "' required>"; // Input name updated
+        echo "</div>";
+        echo "<div class='mb-3'>";
+        echo "<label for='email' class='form-label'>Email</label>";
+        echo "<input type='email' class='form-control' id='email' name='email' value='" . $row['email'] . "' required>"; // Input name updated
+        echo "</div>";
+        echo "<div class='mb-3'>";
+        echo "<label for='position' class='form-label'>Position</label>";
+        echo "<input type='text' class='form-control' id='position' name='position' value='" . $row['position'] . "' required>"; // Input name updated
+        echo "</div>";
+        echo "<div class='mb-3'>";
+        echo "<label for='status' class='form-label'>Status</label>";
+        echo "<select class='form-select' id='status' name='status' required>";
+        echo "<option value='Pending' ". ($row['status'] == 'Pending' ? 'selected' : '') .">Pending</option>"; // Set default status to Pending
+        echo "<option value='Accepted' ". ($row['status'] == 'Accepted' ? 'selected' : '') .">Accepted</option>";
+        echo "<option value='Rejected' ". ($row['status'] == 'Rejected' ? 'selected' : '') .">Rejected</option>";
+        echo "</select>";
+        echo "</div>";
+        echo "<button type='submit' class='btn btn-primary'>Update</button>";
+        echo "</form>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
 
                                             // Delete Modal
 echo "<div class='modal fade' id='deleteModal" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel" . $row['id'] . "' aria-hidden='true'>";

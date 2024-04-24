@@ -34,7 +34,6 @@
     
     
     <?php
-    
 // Establish database connection
 $conn = mysqli_connect('localhost', 'root', '', 'applicant');
 
@@ -49,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['id']) && is_numeric($_G
     $name = $_POST['name'];
     $email = $_POST['email'];
     $position = $_POST['position'];
+    $status = $_POST['status'];
 
     // Check if the updated email already exists for another applicant
     $sql_check = "SELECT * FROM applications WHERE email='$email' AND id!= $id";
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['id']) && is_numeric($_G
         <?php
     } else {
         // Update the applicant if no duplicate email is found
-        $sql = "UPDATE applications SET name='$name', email='$email', position='$position' WHERE id=$id";
+        $sql = "UPDATE applications SET name='$name', email='$email', position='$position', status='$status' WHERE id=$id";
 
         if (mysqli_query($conn, $sql)) {
             ?>
@@ -80,7 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['id']) && is_numeric($_G
                     timer: 2000
                 }).then(function () {
                     window.location.href = "index.php";
-                    
                 });
             </script>
             <?php
