@@ -31,17 +31,10 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="logo.png" alt="ATS Logo" height="50">
-            </a>
-            
-            <h1 class="m-auto">Applicant Tracking Management System</h1>
-        </div>
-    </nav>
+    
     
     <?php
+    
 // Establish database connection
 $conn = mysqli_connect('localhost', 'root', '', 'applicant');
 
@@ -84,8 +77,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['id']) && is_numeric($_G
                     icon: 'success',
                     title: 'Success',
                     text: 'Application updated successfully!',
+                    timer: 2000
                 }).then(function () {
-                    window.location.href = "view_application.php?id=<?php echo $id; ?>";
+                    window.location.href = "index.php";
+                    
                 });
             </script>
             <?php

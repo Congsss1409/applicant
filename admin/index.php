@@ -99,12 +99,12 @@
                                             echo "<td>" . $row['position'] . "</td>";
                                             echo "<td>
                                                     <button type='button' class='btn btn-info' data-bs-toggle='modal' data-bs-target='#viewModal" . $row['id'] . "'>View</button>
-                                                    <a href='edit_application.php?id=" . $row['id'] . "' class='btn btn-primary'>Edit</a>
-                                                    <a href='delete_application.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>
+                                                    <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#editModal" . $row['id'] . "'>Edit</button>
+                                                    <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal" . $row['id'] . "'>Delete</button>
                                                   </td>";
                                             echo "</tr>";
 
-                                            // Modal for each applicant
+                                            // View Modal
                                             echo "<div class='modal fade' id='viewModal" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='viewModalLabel" . $row['id'] . "' aria-hidden='true'>";
                                             echo "<div class='modal-dialog' role='document'>";
                                             echo "<div class='modal-content'>";
@@ -124,6 +124,59 @@
                                             echo "</div>";
                                             echo "</div>";
                                             echo "</div>";
+
+                                            // Edit Modal
+echo "<div class='modal fade' id='editModal" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='editModalLabel" . $row['id'] . "' aria-hidden='true'>";
+echo "<div class='modal-dialog' role='document'>";
+echo "<div class='modal-content'>";
+echo "<div class='modal-header'>";
+echo "<h5 class='modal-title' id='editModalLabel" . $row['id'] . "'>Edit Applicant</h5>";
+echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
+echo "</div>";
+echo "<div class='modal-body'>";
+echo "<form method='POST' action='edit_application.php?id=" . $row['id'] . "'>"; // Form action updated
+echo "<div class='mb-3'>";
+echo "<label for='name' class='form-label'>Name</label>";
+echo "<input type='text' class='form-control' id='name' name='name' value='" . $row['name'] . "' required>"; // Input name updated
+echo "</div>";
+echo "<div class='mb-3'>";
+echo "<label for='email' class='form-label'>Email</label>";
+echo "<input type='email' class='form-control' id='email' name='email' value='" . $row['email'] . "' required>"; // Input name updated
+echo "</div>";
+echo "<div class='mb-3'>";
+echo "<label for='position' class='form-label'>Position</label>";
+echo "<input type='text' class='form-control' id='position' name='position' value='" . $row['position'] . "' required>"; // Input name updated
+echo "</div>";
+echo "<button type='submit' class='btn btn-primary'>Update</button>";
+echo "</form>";
+echo "</div>";
+echo "</div>";
+echo "</div>";
+echo "</div>";
+
+                                            // Delete Modal
+echo "<div class='modal fade' id='deleteModal" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel" . $row['id'] . "' aria-hidden='true'>";
+echo "<div class='modal-dialog' role='document'>";
+echo "<div class='modal-content'>";
+echo "<div class='modal-header'>";
+echo "<h5 class='modal-title' id='deleteModalLabel" . $row['id'] . "'>Confirm Deletion</h5>";
+echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
+echo "</div>";
+echo "<div class='modal-body'>";
+echo "Are you sure you want to delete this applicant?";
+echo "</div>";
+echo "<div class='modal-footer'>";
+echo "<form method='POST' action='delete_application.php?id=" . $row['id'] . "'>"; // Form action updated
+echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
+echo "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>"; // Changed to button type and removed form action
+echo "<button type='submit' class='btn btn-danger'>Delete</button>"; // Changed to button type and removed form action
+echo "</form>";
+echo "</div>";
+echo "</div>";
+echo "</div>";
+echo "</div>";
+
+
                                         }
                                     } else {
                                         echo "<tr><td colspan='5'>No applications found</td></tr>";
