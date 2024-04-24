@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Applicant Tracking Management System</title>
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Custom Styles */
         body {
             background-color: #f8f9fa;
         }
@@ -26,11 +24,9 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        /* End Custom Styles */
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
         <div class="container">
             <a class="navbar-brand" href="index.php">
@@ -43,7 +39,6 @@
 
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar -->
             <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar">
                 <br>
                 <div class="position-sticky">
