@@ -54,6 +54,7 @@
                     </ul>
                 </div>
             </nav>
+            
 
             <!-- Main content area -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
@@ -68,8 +69,6 @@
                                     <tr>
                                         <th scope="col">Applicant ID</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Position</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -91,11 +90,8 @@
                                             echo "<tr>";
                                             echo "<td>" . $row['id'] . "</td>";
                                             echo "<td>" . $row['name'] . "</td>";
-                                            echo "<td>" . $row['email'] . "</td>";
-                                            echo "<td>" . $row['position'] . "</td>";
                                             echo "<td>
                                                     <button type='button' class='btn btn-info' data-bs-toggle='modal' data-bs-target='#viewModal" . $row['id'] . "'>View</button>
-                                                    
                                                   </td>";
                                             echo "</tr>";
 
@@ -108,10 +104,10 @@
                                             echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
                                             echo "</div>";
                                             echo "<div class='modal-body'>";
-                                            echo "<p>Applicant ID: " . $row['id'] . "</p>";
                                             echo "<p>Name: " . $row['name'] . "</p>";
                                             echo "<p>Email: " . $row['email'] . "</p>";
                                             echo "<p>Position: " . $row['position'] . "</p>";
+                                            echo "<p>Status: " . $row['status'] . "</p>";
                                             echo "</div>";
                                             echo "<div class='modal-footer'>";
                                             echo "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>";

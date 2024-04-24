@@ -30,6 +30,8 @@
         $name = $_POST['name'];
         $email = $_POST['email'];
         $position = $_POST['position'];
+        $status = $_POST['status'];
+
 
         // Check if the applicant already exists
         $sql_check = "SELECT * FROM applications WHERE email='$email'";
@@ -52,7 +54,7 @@
                  </script>";
         } else {
             // Insert the new applicant if they don't exist
-            $sql_insert = "INSERT INTO applications (name, email, position) VALUES ('$name', '$email', '$position')";
+            $sql_insert = "INSERT INTO applications (name, email, position, status) VALUES ('$name', '$email', '$position', '$status')";
 
             if (mysqli_query($conn, $sql_insert)) {
                 // SweetAlert for success message
