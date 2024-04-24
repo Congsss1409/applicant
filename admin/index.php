@@ -150,10 +150,10 @@
                                             echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
                                             echo "</div>";
                                             echo "<div class='modal-body'>";
-                                            echo "<p>Name: " . $row['name'] . "</p>";
+                                            echo "<p><b>Name:  " . $row['name'] . "</p>";
                                             echo "<p>Email: " . $row['email'] . "</p>";
                                             echo "<p>Position: " . $row['position'] . "</p>";
-                                            echo "<p>Status: " . $row['status'] . "</p>";
+                                            echo "<p>Status: " . $row['status'] . "</p></b>";
                                             echo "</div>";
                                             echo "<div class='modal-footer'>";
                                             echo "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>";
