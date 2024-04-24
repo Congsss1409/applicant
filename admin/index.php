@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Applicant Tracking Management System</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Custom Styles */
         body {
@@ -79,35 +79,58 @@
                                 </thead>
                                 <tbody>
                                     <?php
-// Establish database connection
-$conn = mysqli_connect('localhost', 'root', '', 'applicant');
+                                    // Establish database connection
+                                    $conn = mysqli_connect('localhost', 'root', '', 'applicant');
 
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+                                    // Check connection
+                                    if (!$conn) {
+                                        die("Connection failed: " . mysqli_connect_error());
+                                    }
 
-$sql = "SELECT * FROM applications";
-$result = mysqli_query($conn, $sql);
+                                    $sql = "SELECT * FROM applications";
+                                    $result = mysqli_query($conn, $sql);
 
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
-        echo "<td>" . $row['id'] . "</td>";
-        echo "<td>" . $row['name'] . "</td>";
-        echo "<td>" . $row['email'] . "</td>";
-        echo "<td>" . $row['position'] . "</td>";
-        echo "<td><a href='view_application.php?id=" . $row['id'] . "' class='btn btn-info'>View</a>
-        <a href='edit_application.php?id=" . $row['id'] . "' class='btn btn-primary'>Edit</a>
-        <a href='delete_application.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a></td>";
-        echo "</tr>";
-    }
-} else {
-    echo "<tr><td colspan='5'>No applications found</td></tr>";
-}
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            echo "<tr>";
+                                            echo "<td>" . $row['id'] . "</td>";
+                                            echo "<td>" . $row['name'] . "</td>";
+                                            echo "<td>" . $row['email'] . "</td>";
+                                            echo "<td>" . $row['position'] . "</td>";
+                                            echo "<td>
+                                                    <button type='button' class='btn btn-info' data-bs-toggle='modal' data-bs-target='#viewModal" . $row['id'] . "'>View</button>
+                                                    <a href='edit_application.php?id=" . $row['id'] . "' class='btn btn-primary'>Edit</a>
+                                                    <a href='delete_application.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>
+                                                  </td>";
+                                            echo "</tr>";
 
-mysqli_close($conn);
-?>
+                                            // Modal for each applicant
+                                            echo "<div class='modal fade' id='viewModal" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='viewModalLabel" . $row['id'] . "' aria-hidden='true'>";
+                                            echo "<div class='modal-dialog' role='document'>";
+                                            echo "<div class='modal-content'>";
+                                            echo "<div class='modal-header'>";
+                                            echo "<h5 class='modal-title' id='viewModalLabel" . $row['id'] . "'>Applicant Details</h5>";
+                                            echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
+                                            echo "</div>";
+                                            echo "<div class='modal-body'>";
+                                            echo "<p>Applicant ID: " . $row['id'] . "</p>";
+                                            echo "<p>Name: " . $row['name'] . "</p>";
+                                            echo "<p>Email: " . $row['email'] . "</p>";
+                                            echo "<p>Position: " . $row['position'] . "</p>";
+                                            echo "</div>";
+                                            echo "<div class='modal-footer'>";
+                                            echo "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>";
+                                            echo "</div>";
+                                            echo "</div>";
+                                            echo "</div>";
+                                            echo "</div>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='5'>No applications found</td></tr>";
+                                    }
+
+                                    mysqli_close($conn);
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -117,7 +140,7 @@ mysqli_close($conn);
         </div>
     </div>
 
-    <!-- Bootstrap JavaScript (use your own preferred version) -->
-    <script src="bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap 5 JavaScript (use your own preferred version) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
