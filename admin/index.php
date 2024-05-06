@@ -92,8 +92,6 @@
         </div>
     </div>
 </div>
-
-            <!-- Main content area -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
                 <div class="container mt-5">
                     <div class="card">
@@ -112,10 +110,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    // Establish database connection
                                     $conn = mysqli_connect('localhost', 'root', '', 'applicant');
-
-                                    // Check connection
                                     if (!$conn) {
                                         die("Connection failed: " . mysqli_connect_error());
                                     }
@@ -135,8 +130,6 @@
                                                     <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal" . $row['id'] . "'>Delete</button>
                                                   </td>";
                                             echo "</tr>";
-
-                                            // View Modal
                                             echo "<div class='modal fade' id='viewModal" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='viewModalLabel" . $row['id'] . "' aria-hidden='true'>";
                                             echo "<div class='modal-dialog' role='document'>";
                                             echo "<div class='modal-content'>";
