@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Applicant Tracking Management System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
@@ -53,11 +53,13 @@
                     </ul>
                 </div>
             </nav>
+            
             <!-- Add Applicant Modal -->
 <div class="modal fade" id="addApplicantModal" tabindex="-1" role="dialog" aria-labelledby="addApplicantModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
+                
                 <h5 class="modal-title" id="addApplicantModalLabel">Add Applicant</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -97,6 +99,7 @@
                     <div class="card">
                         <div class="card-header bg-dark text-white">
                             <h5 class="mb-0">Applicant List</h5>
+                            
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
@@ -131,7 +134,7 @@
                                                   </td>";
                                             echo "</tr>";
                                             echo "<div class='modal fade' id='viewModal" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='viewModalLabel" . $row['id'] . "' aria-hidden='true'>";
-                                            echo "<div class='modal-dialog' role='document'>";
+                                            echo "<div class='modal-dialog modal-dialog-centered' role='document'>";
                                             echo "<div class='modal-content'>";
                                             echo "<div class='modal-header'>";
                                             echo "<h5 class='modal-title' id='viewModalLabel" . $row['id'] . "'>Applicant Details</h5>";
@@ -152,7 +155,7 @@
 
                                             // Edit Modal
         echo "<div class='modal fade' id='editModal" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='editModalLabel" . $row['id'] . "' aria-hidden='true'>";
-        echo "<div class='modal-dialog' role='document'>";
+        echo "<div class='modal-dialog modal-dialog-centered' role='document'>";
         echo "<div class='modal-content'>";
         echo "<div class='modal-header'>";
         echo "<h5 class='modal-title' id='editModalLabel" . $row['id'] . "'>Update Applicant</h5>";
@@ -189,7 +192,7 @@
 
                                             // Delete Modal
 echo "<div class='modal fade' id='deleteModal" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel" . $row['id'] . "' aria-hidden='true'>";
-echo "<div class='modal-dialog' role='document'>";
+echo "<div class='modal-dialog modal-dialog-centered' role='document'>";
 echo "<div class='modal-content'>";
 echo "<div class='modal-header'>";
 echo "<h5 class='modal-title' id='deleteModalLabel" . $row['id'] . "'>Confirm Deletion</h5>";

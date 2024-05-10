@@ -97,7 +97,7 @@
 
                                             // View Modal
                                             echo "<div class='modal fade' id='viewModal" . $row['id'] . "' tabindex='-1' role='dialog' aria-labelledby='viewModalLabel" . $row['id'] . "' aria-hidden='true'>";
-                                            echo "<div class='modal-dialog' role='document'>";
+                                            echo "<div class='modal-dialog modal-dialog-centered' role='document'>";
                                             echo "<div class='modal-content'>";
                                             echo "<div class='modal-header'>";
                                             echo "<h5 class='modal-title' id='viewModalLabel" . $row['id'] . "'>Applicant Details</h5>";
@@ -136,6 +136,6 @@
     </div>
 
     <!-- Bootstrap 5 JavaScript (use your own preferred version) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
 </body>
 </html>
