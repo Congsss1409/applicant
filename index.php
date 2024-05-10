@@ -154,7 +154,7 @@
         <a href="register.php">No account yet? Register</a>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="jquery-3.6.0.min.js"></script>
 <script src="bootstrap.bundle.min.js"></script> 
 </body>
 </html>
