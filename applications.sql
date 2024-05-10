@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2024 at 06:37 AM
+-- Generation Time: May 10, 2024 at 05:59 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -31,37 +31,21 @@ CREATE TABLE `applications` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `position` varchar(255) NOT NULL
+  `position` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `applications`
 --
 
-INSERT INTO `applications` (`id`, `name`, `email`, `position`) VALUES
-(2401, 'Marcos Despe Taba', 'marcotaba1121@gmail.com', 'Junior Developer'),
-(2402, 'Daniella Jhellie T. Lara', 'ellaaaa56445+45@gmail.com', 'Team Leaders');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `login_tbl`
---
-
-CREATE TABLE `login_tbl` (
-  `loginid` int(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `account_type` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `login_tbl`
---
-
-INSERT INTO `login_tbl` (`loginid`, `email`, `password`, `account_type`) VALUES
-(1001, 'admin', '123', 1),
-(1002, 'user', '123', 2);
+INSERT INTO `applications` (`id`, `name`, `email`, `position`, `status`) VALUES
+(2401, 'Marco D. Taba', 'marcotaba1121@gmail.com', 'Senior Developer', 'Pending'),
+(2402, 'Daniella Jhellie T. Lara', 'ellaaaa@gmail.com', 'Manager MAIN', 'Rejected'),
+(2403, 'Angelo C. Dabao', 'gelo@gmail.com', 'Staff', 'Pending'),
+(2404, 'Fernando M. Gonzales', 'fernando@gmail.com', 'Senior Developer', 'Pending'),
+(2405, 'Mark Andrei Soriano', 'mark@gmail.com', 'Senior Developer', 'Pending'),
+(2406, 'Rudge Pia Espinosa', 'rudge@gmail.com', 'Senior Developer', 'Pending');
 
 --
 -- Indexes for dumped tables
@@ -74,12 +58,6 @@ ALTER TABLE `applications`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `login_tbl`
---
-ALTER TABLE `login_tbl`
-  ADD PRIMARY KEY (`loginid`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -87,13 +65,7 @@ ALTER TABLE `login_tbl`
 -- AUTO_INCREMENT for table `applications`
 --
 ALTER TABLE `applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2425;
-
---
--- AUTO_INCREMENT for table `login_tbl`
---
-ALTER TABLE `login_tbl`
-  MODIFY `loginid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1003;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2420;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
