@@ -9,6 +9,18 @@
         body {
             background-color: #f8f9fa;
         }
+        .header {
+        background-color: ;
+        }
+        .containerH {
+        display: flex;
+        align-items: center; /* Align items vertically in the center */
+        padding: 20px;
+    }
+
+    .header-brand img {
+        margin-left: 50px; /* Adjust margin as needed */
+    }
         .navbar-custom {
             background-color: #6c757d;
             color: white;
@@ -17,42 +29,116 @@
             height: 100vh;
             background-color: #343a40;
             color: white;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            padding-top: 20px;
+            transition: left 0.3s ease;
+        }
+        .sidebar .nav-item {
+    margin-bottom: 10px;
+}
+
+.sidebar .btn {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.sidebar .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    margin-left: 10px;
+}
+
+.sidebar .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.sidebar .btn-outline-secondary {
+    margin-left: 10px;
+    color: red;
+    border-color: red;
+}
+
+.sidebar .btn-outline-secondary:hover {
+    color: #495057;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+}
+        .sidebar.active {
+            left: 0;
         }
         .main-content {
-            padding-top: 20px;
+            margin-right: auto; /* Adjust this value based on the width of the sidebar */
+            padding-top: 1px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        .burger-menu {
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 9999;
+            background-color:black;
+        }
+        .burger-menu span {
+            background-color: #fff;
+            display: block;
+            margin: 4px 0;
+            height: 2px;
+            width: 25px;
+            transition: all 0.3s ease;
+        }
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .burger-menu.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .burger-menu.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <img src="logo.png" alt="ATS Logo" height="50">
-            </a>
-            
-            <h1 class="m-auto">Applicant Tracking Management System</h1>
-        </div>
-    </nav>
+<header class="header">
+    <div class="containerH">
+        <a class="header-brand" href="index.php">
+            <img src="logo.png" alt="ATS Logo" height="50">
+        
+        </a>
+        <h1 class="header-title m-auto">Applicant Tracking Management System</h1>
+    </div>
+</header>
 
-    <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar">
-                <br>
-                <div class="position-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                             <button type="button" class="btn btn-success btn-block" data-bs-toggle="modal" data-bs-target="#addApplicantModal">Add Applicant</button>
-                        </li>
-                        <br>
-                        <li class="nav-item">
-                            <a href="../index.php" class="btn btn-danger btn-block">Log Out</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+
+<body>
+    
+    <div class="burger-menu" id="burgerMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+    <ul class="nav flex-column">
+        <br>
+        <br>
+        <li class="nav-item">
+            <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#addApplicantModal">Add Applicant</button>
+        </li>
+        <li class="nav-item">
+            <a href="../index.php" class="btn btn-outline-secondary btn-block">Log Out</a>
+        </li>
+        <!-- Add more sidebar links as needed -->
+    </ul>
+</div>
+
+    
             
             <!-- Add Applicant Modal -->
 <div class="modal fade" id="addApplicantModal" tabindex="-1" role="dialog" aria-labelledby="addApplicantModalLabel" aria-hidden="true">
@@ -94,14 +180,19 @@
         </div>
     </div>
 </div>
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+<br>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+    
                 <div class="container mt-5">
+                
+    
                     <div class="card">
+                        
                         <div class="card-header bg-dark text-white">
                             <h5 class="mb-0">Applicant List</h5>
                             
                         </div>
-                        <div class="card-body">
+                        <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -231,5 +322,23 @@ echo "</div>";
 
     <!-- Bootstrap 5 JavaScript (use your own preferred version) -->
     <script src="bootstrap.bundle.min.js"></script>
+    <script>
+        // JavaScript to toggle sidebar
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebar = document.getElementById('sidebar');
+            const burgerMenu = document.getElementById('burgerMenu');
+            const mainContent = document.querySelector('.main-content');
+
+            // Toggle sidebar visibility
+            function toggleSidebar() {
+                sidebar.classList.toggle('active');
+                mainContent.style.marginLeft = sidebar.classList.contains('active') ? '250px' : '0';
+                burgerMenu.classList.toggle('active');
+            }
+
+            // Event listener for burger menu button
+            burgerMenu.addEventListener('click', toggleSidebar);
+        });
+    </script>
 </body>
 </html>
